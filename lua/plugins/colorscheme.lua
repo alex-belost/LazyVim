@@ -4,12 +4,12 @@ return {
     lazy = true,
     name = "catppuccin",
     opts = {
-      custom_highlights = function(colors)
-        return {
-          LineNr = { fg = colors.peach }, -- Change to the desired color for line numbers
-          CursorLineNr = { fg = colors.lavender }, -- Change to the desired color for the current line number
-        }
-      end,
+      -- custom_highlights = function(colors)
+      --   return {
+      -- LineNr = { fg = colors.peach }, -- Change to the desired color for line numbers
+      -- CursorLineNr = { fg = colors.lavender }, -- Change to the desired color for the current line number
+      --   }
+      -- end,
       integrations = {
         aerial = true,
         alpha = true,
@@ -27,12 +27,6 @@ return {
         mini = true,
         native_lsp = {
           enabled = true,
-          underlines = {
-            errors = { "undercurl" },
-            hints = { "undercurl" },
-            warnings = { "undercurl" },
-            information = { "undercurl" },
-          },
         },
         navic = { enabled = true, custom_bg = "lualine" },
         neotest = true,
