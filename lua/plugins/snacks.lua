@@ -7,6 +7,7 @@ return {
     -- Actions table is not needed for this approach
     explorer = {},
     picker = {
+      enabled = true,
       sources = {
         ---@class snacks.picker.explorer.Config: snacks.picker.files.Config|{}
         ---@field follow_file? boolean follow the file from the current buffer
