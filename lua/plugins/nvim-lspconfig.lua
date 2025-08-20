@@ -5,6 +5,17 @@ return {
   opts = {
     servers = {
       eslint = {},
+      marksman = {
+        settings = {
+          markdown = {
+            lint = {
+              config = {
+                MD013 = false,
+              },
+            },
+          },
+        },
+      },
       stylelint_lsp = {
         settings = {
           stylelint = {

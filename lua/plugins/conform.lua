@@ -9,7 +9,10 @@ return {
         scss = { "stylelint" },
         less = { "stylelint" },
         postcss = { "stylelint" },
+        markdown = { "prettier" },
       })
+
+      opts.formatters = opts.formatters or {}
     end,
   },
 }

@@ -44,3 +44,18 @@ end, { desc = "Range format code" })
 vim.keymap.set("n", "<leader>cf", function()
   require("conform").format()
 end, { desc = "Format code" })
+
+-- Move between windows with ctrl + arrow keys
+vim.keymap.set("n", "<C-Left>", "<C-w>h", { desc = "Move to left split" })
+vim.keymap.set("n", "<C-Right>", "<C-w>l", { desc = "Move to right split" })
+vim.keymap.set("n", "<C-Up>", "<C-w>k", { desc = "Move to upper split" })
+vim.keymap.set("n", "<C-Down>", "<C-w>j", { desc = "Move to lower split" })
+
+vim.keymap.set("n", "<C-S-Left>", ":vertical resize +5<CR>", { desc = "Move to left split", silent = true })
+vim.keymap.set("n", "<C-S-Right>", ":vertical resize -5<CR>", { desc = "Move to right split", silent = true })
+vim.keymap.set("n", "<C-S-Up>", ":resize +5<CR>", { desc = "Move to upper split", silent = true })
+vim.keymap.set("n", "<C-S-Down>", ":resize -5<CR>", { desc = "Move to lower split", silent = true })
+
+vim.keymap.set("n", "<leader><space>", function()
+  Snacks.picker.buffers()
+end, { desc = "Find Buffers", silent = true })
