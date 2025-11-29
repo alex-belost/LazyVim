@@ -61,3 +61,31 @@ vim.keymap.set("n", "<leader><space>", function()
 end, { desc = "Find Buffers", silent = true })
 
 vim.keymap.set("i", "jj", "<ESC>", { desc = "Escape", silent = true })
+
+vim.keymap.set({ "x", "o" }, "af", function()
+  require("nvim-treesitter-textobjects.select").select_textobject("@function.outer", "textobjects")
+end, { desc = "Function" })
+
+vim.keymap.set({ "x", "o" }, "if", function()
+  require("nvim-treesitter-textobjects.select").select_textobject("@function.inner", "textobjects")
+end, { desc = "Function" })
+
+vim.keymap.set({ "x", "o" }, "ac", function()
+  require("nvim-treesitter-textobjects.select").select_textobject("@class.outer", "textobjects")
+end, { desc = "Class" })
+
+vim.keymap.set({ "x", "o" }, "ic", function()
+  require("nvim-treesitter-textobjects.select").select_textobject("@class.inner", "textobjects")
+end, { desc = "Class" })
+
+vim.keymap.set({ "x", "o" }, "as", function()
+  require("nvim-treesitter-textobjects.select").select_textobject("@local.scope", "locals")
+end, { desc = "Scope" })
+
+vim.keymap.set("n", "<leader>a", function()
+  require("nvim-treesitter-textobjects.swap").swap_next("@parameter.inner")
+end, { desc = "Swap Inner Parameter" })
+
+vim.keymap.set("n", "<leader>A", function()
+  require("nvim-treesitter-textobjects.swap").swap_previous("@parameter.outer")
+end, { desc = "Swap Outer Parameter" })

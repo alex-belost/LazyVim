@@ -6,6 +6,11 @@ return {
   opts = {
     -- Actions table is not needed for this approach
     explorer = {},
+    projects = {
+      "~/Projects/trisk/core/web",
+      "~/Projects/trisk/helpers",
+      "~/Projects/trisk/landing",
+    },
     picker = {
       enabled = true,
       sources = {
