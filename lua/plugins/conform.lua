@@ -2,25 +2,15 @@ return {
   {
     "stevearc/conform.nvim",
     opts = function(_, opts)
-      local util = require("conform.util")
-      -- This will ensure that for the specified filetypes,
-      -- conform.nvim uses stylelint, overriding any other defaults like prettier.
       opts.formatters_by_ft = vim.tbl_deep_extend("force", opts.formatters_by_ft or {}, {
-        -- css = { "stylelint" },
-        -- scss = { "stylelint" },
-        -- less = { "stylelint" },
-        -- postcss = { "stylelint" },
         markdown = { "prettier" },
         html = { "prettier" },
       })
 
-      opts.formatters = opts.formatters or {}
-      opts.formatters.eslint = {
-        command = "npx",
-        args = { "eslint", "--fix", "$FILENAME" },
-        stdin = false,
-        cwd = util.root_file({ "eslint.config.mjs", ".eslintrc", "package.json" }),
-      }
+      opts.default_format_opts = vim.tbl_deep_extend("force", opts.default_format_opts or {}, {
+        timeout_ms = 3000,
+        lsp_format = "fallback",
+      })
     end,
   },
 }

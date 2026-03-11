@@ -1,5 +1,3 @@
-local oil = require("oil")
-
 return {
   "folke/snacks.nvim",
   ---@type snacks.Config
@@ -46,7 +44,7 @@ return {
                   dir = vim.fn.fnamemodify(item.file, ":p:h")
                 end
 
-                oil.open(dir)
+                require("oil").open(dir)
               end,
             },
             yank_path_part = function(picker, item)
@@ -128,7 +126,7 @@ return {
                 ["I"] = { "toggle_ignored", desc = "Ignored toggle" },
                 ["H"] = { "toggle_hidden", desc = "Hidden toggle" },
                 ["Z"] = { "explorer_close_all", desc = "Close all" },
-                ["]g]"] = { "explorer_git_next", desc = "Git next" },
+                ["]g"] = { "explorer_git_next", desc = "Git next" },
                 ["[g"] = { "explorer_git_prev", desc = "Git prev" },
                 ["]d"] = { "explorer_diagnostic_next", desc = "Diagnostic_next" },
                 ["[d"] = { "explorer_diagnostic_prev", desc = "Diagnostic prev" },
