@@ -2,8 +2,11 @@ return {
   "folke/snacks.nvim",
   ---@type snacks.Config
   opts = {
-    -- Actions table is not needed for this approach
     explorer = {},
+    dim = { enabled = true },
+    zen = { enabled = true },
+    rename = { enabled = true },
+    scroll = { enabled = true },
     projects = {
       "~/Projects/trisk/core/web",
       "~/Projects/trisk/helpers",
