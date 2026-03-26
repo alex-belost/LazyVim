@@ -22,7 +22,17 @@ end, { silent = true, desc = "Set shiftwidth" })
 vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
 vim.keymap.set("n", "<Tab>", "<cmd>bnext<cr>", { desc = "Next buffer" })
 
-vim.keymap.set("n", "<leader>ce", "<cmd>EslintFixAll<cr>", { desc = "Eslint Fix All" })
+vim.keymap.set("n", "<leader>ce", "<cmd>LspEslintFixAll<cr>", { desc = "Eslint Fix All" })
+
+local js_ft = { javascript = true, javascriptreact = true, typescript = true, typescriptreact = true }
+
+vim.keymap.set("n", "<leader>cf", function()
+  if js_ft[vim.bo.filetype] and vim.fn.exists(":LspEslintFixAll") == 2 then
+    vim.cmd("LspEslintFixAll")
+  else
+    LazyVim.format({ force = true })
+  end
+end, { desc = "Format" })
 vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename" })
 -- Move between windows with ctrl + arrow keys
 vim.keymap.set("n", "<C-Left>", "<C-w>h", { desc = "Move to left split" })
