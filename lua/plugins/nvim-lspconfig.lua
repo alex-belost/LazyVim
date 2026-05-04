@@ -10,6 +10,10 @@ return {
       },
     }
 
+    opts.servers.stylelint_lsp = {
+      filetypes = { "css", "scss", "less", "sass", "postcss" },
+    }
+
     opts.servers.marksman = {
       settings = {
         markdown = {
@@ -17,17 +21,6 @@ return {
             config = {
               MD013 = false,
             },
-          },
-        },
-      },
-    }
-
-    opts.servers.stylelint_lsp = {
-      settings = {
-        stylelint = {
-          -- This is the crucial part to enable formatting
-          format = {
-            enable = true,
           },
         },
       },
@@ -47,18 +40,5 @@ return {
         },
       },
     })
-
-    opts.setup = opts.setup or {}
-
-    opts.setup.eslint = function()
-      vim.api.nvim_create_autocmd("LspAttach", {
-        callback = function(args)
-          local client = vim.lsp.get_client_by_id(args.data.client_id)
-          if client and (client.name == "tsserver" or client.name == "vtsls") then
-            client.server_capabilities.documentFormattingProvider = false
-          end
-        end,
-      })
-    end
   end,
 }

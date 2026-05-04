@@ -9,30 +9,13 @@ vim.keymap.set("n", "<leader>bf", function()
   Snacks.explorer.reveal()
 end, { silent = true, desc = "Find current buffer" })
 
-vim.keymap.set("n", "<leader>uo", function()
-  local value = vim.fn.input("Enter shiftwidth value: ")
-
-  if tonumber(value) then
-    vim.cmd("set shiftwidth=" .. value)
-  else
-    print("Invalid value: Please enter a numeric value")
-  end
-end, { silent = true, desc = "Set shiftwidth" })
+vim.keymap.set("n", "<leader>uo", require("util.options").shiftwidth_prompt, { silent = true, desc = "Set shiftwidth" })
 
 vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
 vim.keymap.set("n", "<Tab>", "<cmd>bnext<cr>", { desc = "Next buffer" })
 
 vim.keymap.set("n", "<leader>ce", "<cmd>LspEslintFixAll<cr>", { desc = "Eslint Fix All" })
-
-local js_ft = { javascript = true, javascriptreact = true, typescript = true, typescriptreact = true }
-
-vim.keymap.set("n", "<leader>cf", function()
-  if js_ft[vim.bo.filetype] and vim.fn.exists(":LspEslintFixAll") == 2 then
-    vim.cmd("LspEslintFixAll")
-  else
-    LazyVim.format({ force = true })
-  end
-end, { desc = "Format" })
+vim.keymap.set("n", "<leader>cf", require("util.format").buffer_format, { desc = "Format" })
 vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename" })
 -- Move between windows with ctrl + arrow keys
 vim.keymap.set("n", "<C-Left>", "<C-w>h", { desc = "Move to left split" })
@@ -50,3 +33,5 @@ vim.keymap.set("n", "<leader><space>", function()
 end, { desc = "Find Buffers", silent = true })
 
 vim.keymap.set("i", "jj", "<ESC>", { desc = "Escape", silent = true })
+
+require("keymaps.snippets")

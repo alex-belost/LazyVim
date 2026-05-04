@@ -2,14 +2,16 @@ return {
   {
     "stevearc/conform.nvim",
     opts = function(_, opts)
+      local prettier = { "prettierd", "prettier", stop_after_first = true }
+
       opts.formatters_by_ft = vim.tbl_deep_extend("force", opts.formatters_by_ft or {}, {
-        markdown = { "prettierd", "prettier", stop_after_first = true },
-        html = { "prettierd", "prettier", stop_after_first = true },
-        css = { "prettierd", "prettier", stop_after_first = true },
-        scss = { "prettierd", "prettier", stop_after_first = true },
-        json = { "prettierd", "prettier", stop_after_first = true },
-        jsonc = { "prettierd", "prettier", stop_after_first = true },
-        yaml = { "prettierd", "prettier", stop_after_first = true },
+        markdown = prettier,
+        html = prettier,
+        css = prettier,
+        scss = prettier,
+        json = prettier,
+        jsonc = prettier,
+        yaml = prettier,
       })
 
       opts.default_format_opts = vim.tbl_deep_extend("force", opts.default_format_opts or {}, {

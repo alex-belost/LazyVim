@@ -1,0 +1,7 @@
+{
+  "Console log with line marker": {
+    "prefix": "clog",
+    "body": "console.log('${1:value}:$TM_LINE_NUMBER', $1);$0",
+    "description": "console.log with variable name and line number"
+  }
+}
