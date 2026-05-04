@@ -1,4 +1,5 @@
 vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("user_snippets_js", { clear = true }),
   pattern = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
   callback = function(args)
     vim.keymap.set("x", "<leader>cnl", function()

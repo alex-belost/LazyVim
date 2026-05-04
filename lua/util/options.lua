@@ -1,12 +1,12 @@
 local M = {}
 
 function M.shiftwidth_prompt()
-  local value = vim.fn.input("Enter shiftwidth value: ")
+  local value = tonumber(vim.fn.input("Enter shiftwidth value: "))
 
-  if tonumber(value) then
-    vim.cmd("set shiftwidth=" .. value)
+  if value then
+    vim.bo.shiftwidth = value
   else
-    print("Invalid value: Please enter a numeric value")
+    vim.notify("Invalid value: please enter a numeric value", vim.log.levels.ERROR)
   end
 end
 
