@@ -10,7 +10,11 @@ return {
       },
     }
 
+    -- mason-lspconfig still maps `stylelint_lsp` to the deprecated `stylelint-lsp`
+    -- package. Skip auto-install here; the binary is provided by the
+    -- `stylelint-language-server` Mason package (see plugins/mason.lua).
     opts.servers.stylelint_lsp = {
+      mason = false,
       filetypes = { "css", "scss", "less", "sass", "postcss" },
     }
 
